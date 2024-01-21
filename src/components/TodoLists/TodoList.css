@@ -1,0 +1,18 @@
+.todoList-container{
+    margin: 100px;
+}
+
+.todoList-container > h1{
+    margin: 10px;
+    text-align: center;
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 5rem;
+    text-decoration: underline;
+}
+
+.todoList-form{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
