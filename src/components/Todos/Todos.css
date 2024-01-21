@@ -38,6 +38,11 @@
     font-size:30px;
 }
 
+.completed-todo{
+    font-size:30px;
+    text-decoration: line-through;
+}
+
 .todo-buttons{
     width: 30%;
     display: flex;
@@ -67,4 +72,5 @@
     background:linear-gradient(orange , #667EEA);border: none;
     outline: none;
 }
+
 
