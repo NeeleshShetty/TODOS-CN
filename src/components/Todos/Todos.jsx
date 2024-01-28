@@ -32,19 +32,11 @@ const Todos = ({todoList , setTodoList}) => {
   const handleEdit = async(id,title)=>{
     setEditId(id);
     setEditTitle(title)
+    console.log("edit id",editId);
   }
 
   const handleUpdate = async(id)=>{
       try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-          method: 'PUT',
-          body: JSON.stringify({title: editTitle}),
-          headers: {'Content-type': 'application/json; charset=UTF-8'},
-        })
-  
-        if(!response.ok){
-          throw new Error("Couldn't update todo")
-        }
   
         const updatedTodoList = todoList.map((todo)=> todo.id === id ? {...todo ,title:editTitle } : todo)
   
@@ -52,6 +44,7 @@ const Todos = ({todoList , setTodoList}) => {
         setEditId(null);
         setEditTitle("");
         toast.success("Edited successfully!",{position:"top-center"})
+        console.log(updatedTodoList);
       } catch (error) {
         toast.error(error.message,{position:"top-center"})
       }
