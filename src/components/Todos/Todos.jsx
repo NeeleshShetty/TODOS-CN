@@ -85,11 +85,11 @@ const Todos = ({todoList , setTodoList}) => {
         ) :
         (
           <>
-          <div className={`${todo.completed ? "completed-todo" : "todos-title"} `}>{todo.title}</div>
+          <div className='todos-title'>{todo.title}</div>
           <div className='todo-buttons'>
             <div><button className='delete' onClick={()=> handleDelete(todo.id)}><DeleteIcon /></button></div>
             <div><button className='edit' onClick={()=>handleEdit(todo.id , todo.title)}><EditIcon /></button></div>
-            <div><button className={"complete"} onClick={()=>handleCompletion(todo.id)}> {todo.completed ? <CheckIcon /> : <Brightness1OutlinedIcon />}</button></div>
+            <div><button className="complete" onClick={()=>handleCompletion(todo.id)}> {todo.completed ? <CheckIcon /> : <Brightness1OutlinedIcon />}</button></div>
           </div>
          
         </>

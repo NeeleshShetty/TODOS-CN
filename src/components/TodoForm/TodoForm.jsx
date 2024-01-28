@@ -3,8 +3,7 @@ import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import "./TodoForm.css"
 function TodoForm({todoList , setTodoList,setTodo,todo}) {
-    
-
+   
 
     const handleAdd = (e)=>{
             e.preventDefault();
@@ -18,37 +17,38 @@ function TodoForm({todoList , setTodoList,setTodo,todo}) {
         }
 
        //add the item to the list
-       const addTodo = async()=>{
-        
-        const newTodo ={
-            title:todo,
-            completed:false,
-            
-        }
+       const addTodo = async () => {
+        const newTodo = {
+          title: todo,
+          completed: false,
+        };
+      
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts',{
-                method: 'POST',
-                body: JSON.stringify(newTodo),
-                headers: {'Content-type': 'application/json; charset=UTF-8'},
-            })
-            
-            if (!response.ok) {
-                throw new Error('Failed to add todo');
-            }
+          const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(newTodo),
+            headers: { 'Content-type': 'application/json; charset=UTF-8' },
+          });
+      
+          if (!response.ok) {
+            throw new Error('Failed to add todo');
+          }
+      
+          const data = await response.json();
+          data.id = Date.now()
+          console.log(data);
+      
+          // Use the id from the response data
+          setTodoList([data, ...todoList]);
+          setTodo('');
 
-            const data = await response.json()
-            console.log(data);
-            setTodoList([data,...todoList])
-            setTodo("")
-            
-            toast.success("Added successfully!",{position:"top-center"})
-
+          console.log(todoList);
+      
+          toast.success('Added successfully!', { position: 'top-center' });
         } catch (error) {
-            toast.error(error.message,{position:"top-center"})
-          
-
+          toast.error(error.message, { position: 'top-center' });
         }
-    }
+      };
 
   return (
     <>
